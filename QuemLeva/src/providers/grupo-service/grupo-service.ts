@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HttpClient } from '@angular/common/http';
@@ -17,6 +18,7 @@ export class GrupoServiceProvider extends BaseServiceProvider {
   currentGrupo: FirebaseObjectObservable<Grupo>;
   gruposHub: FirebaseListObservable<Grupo[]>;
   grupos: FirebaseListObservable<Grupo[]>;
+  membros: FirebaseListObservable<User[]>;
 
   constructor(
     public http: HttpClient,
@@ -28,12 +30,19 @@ export class GrupoServiceProvider extends BaseServiceProvider {
   }
 
   private listenMyGroups(){
-    const grupoObservable = this.db.list(`/grupos`);
+    const grupoObservable = this.db.list(`/grupos-usuarios`);
     this.grupos = grupoObservable;
   }
 
   public listenGroupsHub(hubKey: number){
     const grupoObservable = this.db.list(`/grupos/${hubKey}`);
     this.gruposHub = grupoObservable;
+  }
+
+  public listenMembrosgrupo(grupoKey){
+    const membrosObservable = this.db.list(`/grupos-usuarios/${grupoKey}/membros`);
+    console.log(grupoKey);
+    
+    this.membros = membrosObservable;
   }
 }
