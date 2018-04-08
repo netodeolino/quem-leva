@@ -9,6 +9,9 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { HubsPage } from '../pages/hubs/hubs';
 import { LoginPage } from './../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
+import { DetalhesGrupoPage } from '../pages/detalhes-grupo/detalhes-grupo';
+import { BuscarPessoasPage } from '../pages/buscar-pessoas/buscar-pessoas';
+import { AgendaGrupoPage } from '../pages/agenda-grupo/agenda-grupo';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,6 +39,9 @@ export const firebaseConfig = {
     HubsPage,
     TabsPage,
     LoginPage,
+    DetalhesGrupoPage,
+    BuscarPessoasPage,
+    AgendaGrupoPage,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,10 @@ export const firebaseConfig = {
     PerfilPage,
     HubsPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    DetalhesGrupoPage,
+    BuscarPessoasPage,
+    AgendaGrupoPage,
   ],
   providers: [
     StatusBar,
