@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 
