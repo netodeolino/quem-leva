@@ -30,17 +30,21 @@ export class LoginPage {
         }
         this.navCtrl.setRoot(TabsPage);
         this.navCtrl.push(TabsPage);
-        this.loading.dismiss();
+        console.log(user);
+        
       });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
-  loginFacebook(){
-    this.authService.loginFacebook().then((isLogged) => {
+    }
+    
+    ionViewDidLoad() {
+      console.log('ionViewDidLoad LoginPage');
+    }
+    
+    loginFacebook(){
       this.loading = this.showLoading();
+      this.authService.loginFacebook().then((isLogged) => {
+        if(isLogged){
+          this.loading.dismiss();
+        }
     });
   }
 
