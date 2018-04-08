@@ -36,7 +36,7 @@ export class AuthServiceProvider extends BaseServiceProvider {
               name: result.user.displayName, 
               email: result.user.email, 
               facebookToken: result.credential.accessToken, 
-              uidFacebook: result.additionalUserInfo.profile.id, 
+              uidFacebook: result.additionalUserInfo.profile.id,
               photo: `https://graph.facebook.com/${result.additionalUserInfo.profile.id}/picture?type=large&access_token=${result.credential.accessToken}`}).then(() => {
                 resolve(true);
               }).catch(this.handlePromiseError); 

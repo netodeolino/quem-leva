@@ -29,9 +29,7 @@ export class LoginPage {
           return;
         }
         this.navCtrl.setRoot(TabsPage);
-        this.navCtrl.push(TabsPage);
-        console.log(user);
-        
+        this.navCtrl.push(TabsPage);        
       });
     }
     

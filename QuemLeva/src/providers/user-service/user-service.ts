@@ -46,4 +46,8 @@ export class UserServiceProvider extends BaseServiceProvider{
       })
   }
 
+  edit(user: User) : firebase.Promise<void> {
+    return this.currentUser.update(user).catch(this.handlePromiseError);
+  }
+
 }

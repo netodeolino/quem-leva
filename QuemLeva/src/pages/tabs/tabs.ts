@@ -1,3 +1,4 @@
+import { ChatPage } from './../chat/chat';
 import { Component } from '@angular/core';
 
 import { PerfilPage } from '../perfil/perfil';
@@ -12,6 +13,7 @@ export class TabsPage {
   tab1Root = HubsPage;
   tab2Root = GruposPage;
   tab3Root = PerfilPage;
+  tab4Root = ChatPage;
 
   constructor() {
 
