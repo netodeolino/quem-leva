@@ -11,4 +11,11 @@ export class HubsPage {
 
   }
 
+  onInput(event) {
+
+  }
+
+  onCancel(event) {
+    
+  }
 }
