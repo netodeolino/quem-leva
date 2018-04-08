@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-detalhes-hub',
@@ -7,10 +7,10 @@ import { NavController } from 'ionic-angular';
 })
 
 export class DetalhesHubPage {
-  public grupo: Object;
+  public hub: Object;
 
-  constructor(public navCtrl: NavController) {
-    this.grupo = {}; // TODO: receber grupo por parametro de navegacao
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.hub = navParams.get('hub'); 
   }
 }
 
