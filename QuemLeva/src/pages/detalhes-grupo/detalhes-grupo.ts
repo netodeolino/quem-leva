@@ -9,7 +9,7 @@ import { NavController, NavParams } from 'ionic-angular';
 export class DetalhesGrupoPage {
   public grupo: Object;
 
-  constructor(public navCtrl: NavController, private navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.grupo = navParams.get("grupo");
   }
 }

@@ -8,7 +8,7 @@ import { DetalhesHubPage } from '../detalhes-hub/detalhes-hub';
 })
 export class HubsPage {
 
-  private hubs: any = [
+  public hubs: any = [
     {
       nome: 'UFC',
       icon: 'school',

@@ -9,8 +9,8 @@ import { NavController, NavParams } from 'ionic-angular';
 export class DetalhesHubPage {
   public hub: Object;
 
-  constructor(public navCtrl: NavController, private navParams: NavParams) {
-    this.hub = navParams.get("hub");
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.hub = navParams.get('hub');
   }
 }
 
