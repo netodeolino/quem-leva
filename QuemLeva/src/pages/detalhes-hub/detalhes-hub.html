@@ -12,7 +12,7 @@
       <ion-avatar item-start>
         <img src="{{grupo.img}}">
       </ion-avatar>
-      <div class="grupo">
+      <div class="grupo" (click)="itemSelected(grupo)">
         {{grupo.nome}} 
       </div>
     </ion-item>
