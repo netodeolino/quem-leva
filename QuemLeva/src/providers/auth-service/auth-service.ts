@@ -24,12 +24,26 @@ export class AuthServiceProvider extends BaseServiceProvider {
       console.log('Hello AuthServiceProvider Provider');
   }
 
-  loginFacebook(){
+  loginFacebook() : Promise<Boolean>{
     var provider = new firebase.auth.FacebookAuthProvider();
 
-    this.af.auth.signInWithRedirect(provider).then((res) => {
-      console.log(res);
-    }).catch(this.handlePromiseError)
+    return new Promise((resolve, reject) => {
+      this.af.auth.signInWithRedirect(provider).then((result) => {
+        const userObservable = this.db.object(`/users/${result.user.uid}`);
+        userObservable.valueChanges().first().subscribe((user) => {
+          if(user.hasOwnProperty('$value')){
+            userObservable.update({
+              name: result.user.displayName, 
+              email: result.user.email, 
+              facebookToken: result.credential.accessToken, 
+              uidFacebook: result.additionalUserInfo.profile.id, 
+              photo: `https://graph.facebook.com/${result.additionalUserInfo.profile.id}/picture?type=large&access_token=${result.credential.accessToken}`}).then(() => {
+                resolve(true);
+              }).catch(this.handlePromiseError); 
+          }  
+        })
+      }).catch(this.handlePromiseError)
+    }
 
   }
 
