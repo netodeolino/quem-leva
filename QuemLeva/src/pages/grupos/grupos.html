@@ -8,13 +8,13 @@
 
 <ion-content padding>
   <ion-list class="lista-grupos">
-    <ion-item
-      *ngFor="let grupo of grupos"
-      (click)="open($event, grupo)">
+    <ion-item *ngFor="let grupo of grupos" (click)="open($event, grupo)">
+      <ion-avatar item-start>
+        <img src="{{grupo.img}}">
+      </ion-avatar>
       <div class="grupo"> 
         {{grupo.nome}} 
       </div> 
     </ion-item> 
   </ion-list>
 </ion-content>
-

@@ -5,12 +5,13 @@
     [showCancelButton]="shouldShowCancel"
     (ionInput)="onInput($event)"
     (ionCancel)="onCancel($event)"
-    placeholder="Trabalho, faculdade, ...">
+    placeholder="Buscar um HUB">
   </ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let hub of hubs" (click)="itemSelected(hub)">
       <ion-icon name="{{hub.icon}}" item-start></ion-icon>
       {{hub.nome}}
+      <p>{{hub.qtd}} pessoas</p>
     </ion-item>
   </ion-list>
 </ion-content>
