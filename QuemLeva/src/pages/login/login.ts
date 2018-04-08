@@ -1,6 +1,6 @@
 import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
@@ -17,20 +17,20 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 })
 export class LoginPage {
 
-  displayName;
+  loading: Loading;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public loadingCtrl : LoadingController,
     public authService: AuthServiceProvider ) {
       this.authService.af.authState.subscribe(user => {
-        if (!user) {
-          this.displayName = null;        
+        if (!user) {       
           return;
         }
-        this.displayName = user.displayName;      
         this.navCtrl.setRoot(TabsPage);
         this.navCtrl.push(TabsPage);
+        this.loading.dismiss();
       });
   }
 
@@ -39,13 +39,20 @@ export class LoginPage {
   }
 
   loginFacebook(){
-    this.authService.loginFacebook().then((resp: boolean) => {
-      
+    this.authService.loginFacebook().then((isLogged) => {
+      this.loading = this.showLoading();
     });
   }
 
   logout(){
     this.authService.logout();
   }
+
+  private showLoading() : Loading {
+    let loading : Loading = this.loadingCtrl.create({content : 'Entrando...'});
+    loading.present();
+    return loading;
+  }
+
 
 }

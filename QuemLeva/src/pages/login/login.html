@@ -7,16 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title>Login</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <h1>Olá {{displayName}}</h1>
-
-  <button ion-button (click)="loginFacebook()">Logar</button>
+<ion-content padding >
   
-  <button ion-button (click)="logout()">Sair</button>
+    <h1 text-center>
+      <img src="" alt="">
+    </h1>
+  
+    <form>
+      <ion-item>
+        <ion-icon name="mail" item-left></ion-icon>
+        <ion-input type="email" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock" item-left></ion-icon>
+        <ion-input type="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <br>
+      <button ion-button full type="submit">Logar</button>
+    </form>
+
+    <pre text-center>ou</pre>
+
+    <button ion-button full text-center (click)="loginFacebook()">Logar com Facebook</button>
+  
 </ion-content>
