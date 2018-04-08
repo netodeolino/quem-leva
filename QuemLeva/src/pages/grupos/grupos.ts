@@ -12,9 +12,51 @@ export class GruposPage {
 
   constructor(public navCtrl: NavController) {
     this.grupos = [
-      {nome: "UFC - Carro do Neto"},
-      {nome: "iFactory - Carro do Mikael"},
-      {nome: "Surf - Carro da Lana"}
+      {
+        hub: {
+          nome: "UFC",
+          icon: "school"
+        },
+        nome: "Carro do Neto",
+        membros: [
+          "Neto",
+          "Lucas",
+          "Lana",
+        ],
+        idas: [
+          { horario: '07:00', dias: ['seg', 'ter', 'qua', 'qui', 'sex'] },
+          { horario: '18:00', dias: ['seg', 'qua', 'sex'] },
+        ],
+        voltas: [
+          { horario: '12:00', dias: ['seg', 'ter', 'qua', 'qui', 'sex'] },
+          { horario: '22:00', dias: ['seg', 'qua', 'sex'] },
+        ]
+      },
+      {
+        hub: {
+          nome: "iFactory",
+          icon: "briefcase"
+        },
+        nome: "Carro do Mikael",
+        membros: [
+          "Mikael",
+          "Lana",
+          "Neto",
+        ]
+      },
+      {
+        hub: {
+          nome: "Iguatemi",
+          icon: "pricetag"
+        },
+        nome: "Carro da Lana",
+        membros: [
+          "Lana",
+          "Lucas",
+          "Neto",
+          "Mikael",
+        ]
+      }
     ];
   }
 

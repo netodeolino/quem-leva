@@ -1,15 +1,16 @@
 <ion-content padding>
   <ion-searchbar
     [(ngModel)]="myInput"
+    (ngSubmit)="onSubmit($event)"
     [showCancelButton]="shouldShowCancel"
     (ionInput)="onInput($event)"
     (ionCancel)="onCancel($event)"
     placeholder="Trabalho, faculdade, ...">
   </ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let item of itens" (click)="itemSelected(item)">
-      <ion-icon name="{{item.icon}}" item-start></ion-icon>
-      {{item.nome}}
+    <ion-item *ngFor="let hub of hubs" (click)="itemSelected(hub)">
+      <ion-icon name="{{hub.icon}}" item-start></ion-icon>
+      {{hub.nome}}
     </ion-item>
   </ion-list>
 </ion-content>
