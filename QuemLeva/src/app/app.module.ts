@@ -20,6 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 import { BrMaskerModule } from 'brmasker-ionic-3';
+import { CalendarModule } from 'ionic3-calendar-en';
 
 // Firebase imports
 import { AngularFireModule } from 'angularfire2';
@@ -61,6 +62,7 @@ export const firebaseConfig = {
     HttpModule,
     HttpClientModule,
     BrMaskerModule,
+    CalendarModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

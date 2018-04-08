@@ -10,7 +10,7 @@ export class DetalhesGrupoPage {
   public grupo: Object;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.grupo = navParams.get('grupo');
+    this.grupo = navParams.get("grupo");
   }
 }
 

@@ -8,13 +8,15 @@ import { DetalhesHubPage } from '../detalhes-hub/detalhes-hub';
 })
 export class HubsPage {
 
-  private hubs: any = [
+  public hubs: any = [
     {
       nome: 'UFC',
       icon: 'school',
+      qtd: 4,
       grupos: [
         {
           nome: "Carro do Neto",
+          img: "http://www.provasdevestibular.com.br/wp-content/uploads/2012/06/ufc.jpg",
           membros: [
             "Neto",
             "Lucas",
@@ -33,38 +35,43 @@ export class HubsPage {
         },
         {
           nome: "Carro do Mackeenzy",
+          img: "http://www.provasdevestibular.com.br/wp-content/uploads/2012/06/ufc.jpg",
           membros:[
             "Edson"
-          ]
+          ],
         }
       ]
     },
     {
       nome: 'iFactory',
       icon: 'briefcase',
+      qtd: 3,
       grupos: [
         {
           nome: "Carro do Mikael",
+          img: "http://www.ifactory.com.br/wp-content/uploads/2014/02/Ifactory-logo1.png",
           membros: [
             "Mikael",
             "Lana",
             "Neto",
-          ]
+          ],
         }
       ]
     },
     {
       nome: 'Iguatemi',
       icon: 'pricetag',
+      qtd: 4,
       grupos: [
         {
           nome: "Carro do Neto",
+          img: "https://yr0wqkr99mwlqxhe-zippykid.netdna-ssl.com/wp-content/uploads/2017/09/iguatemi-fortaleza-1.jpg",
           membros: [
             "Lana",
             "Lucas",
             "Neto",
             "Mikael",
-          ]
+          ],
         }
       ]
     }

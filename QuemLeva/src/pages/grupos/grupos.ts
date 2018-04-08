@@ -18,10 +18,11 @@ export class GruposPage {
           icon: "school"
         },
         nome: "Carro do Neto",
+        img: "http://www.provasdevestibular.com.br/wp-content/uploads/2012/06/ufc.jpg",
         membros: [
-          "Neto",
-          "Lucas",
-          "Lana",
+          { nome: "Neto", img: "" },
+          { nome: "Lucas", img: "" },
+          { nome: "Lana", img: "" },
         ],
         idas: [
           { horario: '07:00', dias: ['seg', 'ter', 'qua', 'qui', 'sex'] },
@@ -38,10 +39,11 @@ export class GruposPage {
           icon: "briefcase"
         },
         nome: "Carro do Mikael",
+        img: "http://www.ifactory.com.br/wp-content/uploads/2014/02/Ifactory-logo1.png",
         membros: [
-          "Mikael",
-          "Lana",
-          "Neto",
+          { nome: "Mikael", img: "" },
+          { nome: "Lana", img: "" },
+          { nome: "Neto", img: "" },
         ]
       },
       {
@@ -50,18 +52,18 @@ export class GruposPage {
           icon: "pricetag"
         },
         nome: "Carro da Lana",
+        img: "https://yr0wqkr99mwlqxhe-zippykid.netdna-ssl.com/wp-content/uploads/2017/09/iguatemi-fortaleza-1.jpg",
         membros: [
-          "Lana",
-          "Lucas",
-          "Neto",
-          "Mikael",
+          { nome: "Lana", img: "" },
+          { nome: "Lucas", img: "" },
+          { nome: "Neto", img: "" },
+          { nome: "Mikael", img: "" },
         ]
       }
     ];
   }
 
   public open(event, grupo) {
-    console.log('grupo', grupo);
     this.navCtrl.push(DetalhesGrupoPage, {grupo: grupo});
   }
 }

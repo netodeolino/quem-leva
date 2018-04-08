@@ -10,7 +10,7 @@ export class DetalhesHubPage {
   public hub: Object;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.hub = navParams.get('hub'); 
+    this.hub = navParams.get('hub');
   }
 }
 
