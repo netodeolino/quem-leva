@@ -7,17 +7,9 @@
     placeholder="Trabalho, faculdade, ...">
   </ion-searchbar>
   <ion-list>
-    <ion-item>
-      <ion-icon name="school" item-start></ion-icon>
-        UFC
-    </ion-item>
-    <ion-item>
-      <ion-icon name="briefcase" item-start></ion-icon>
-        iFactory
-    </ion-item>
-    <ion-item>
-      <ion-icon name="pricetag" item-start></ion-icon>
-        Iguatemy
+    <ion-item *ngFor="let item of itens" (click)="itemSelected(item)">
+      <ion-icon name="{{item.icon}}" item-start></ion-icon>
+      {{item.nome}}
     </ion-item>
   </ion-list>
 </ion-content>
