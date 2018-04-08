@@ -1,21 +1,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      {{hub.nome}}
+      Grupos
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let grupo of hub.grupos">
-      <ion-avatar item-start>
-        <img src="{{grupo.img}}">
-      </ion-avatar>
-      <div class="grupo" (click)="itemSelected(grupo)">
-        {{grupo.nome}} 
-      </div>
-    </ion-item>
-  </ion-list>
+  <div *ngIf="grupos">
+    <ion-list>
+      <ion-item *ngFor="let grupo of grupos">
+        <ion-avatar item-start>
+          <img src="{{grupo.img}}">
+        </ion-avatar>
+        <div class="grupo">
+          {{grupo.nome}} 
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
 

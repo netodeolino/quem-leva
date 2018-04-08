@@ -1,3 +1,4 @@
+import { ResultadoPesquisaHubPage } from './../pages/resultado-pesquisa-hub/resultado-pesquisa-hub';
 import { ChatPage } from './../pages/chat/chat';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -30,6 +31,7 @@ import { HttpModule } from '@angular/http';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { GrupoServiceProvider } from '../providers/grupo-service/grupo-service';
 import { CarroServiceProvider } from '../providers/carro-service/carro-service';
+import { HubServiceProvider } from '../providers/hub-service/hub-service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBt8A8cRgpqKwjVYxnihM1IMFPHSTmkH_E",
@@ -52,6 +54,7 @@ export const firebaseConfig = {
     BuscarPessoasPage,
     AgendaGrupoPage,
     DetalhesHubPage,
+    ResultadoPesquisaHubPage
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ export const firebaseConfig = {
     BuscarPessoasPage,
     AgendaGrupoPage,
     DetalhesHubPage,
+    ResultadoPesquisaHubPage
   ],
   providers: [
     StatusBar,
@@ -87,7 +91,8 @@ export const firebaseConfig = {
     HttpClient,
     UserServiceProvider,
     GrupoServiceProvider,
-    CarroServiceProvider
+    CarroServiceProvider,
+    HubServiceProvider
   ]
 })
 export class AppModule {}

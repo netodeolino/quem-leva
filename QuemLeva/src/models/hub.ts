@@ -1,10 +1,13 @@
-export class Grupo {    
+export class Hub {    
+    
+    
     public uid: any;
     public $key : string;
 
     constructor(
         public nome: string,
-        public img: string,
+        public photo : string,
+        public qtd : number,
     ){
 
     }
