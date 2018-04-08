@@ -32,14 +32,17 @@ export class HubsPage {
   }
 
   onCancel(event) {
-    
   }
 
   onSubmit(event) {
-    this.navCtrl.push(ResultadoPesquisaHubPage, {pesquisa: this.myInput});
+    
   }
 
   itemSelected(hubKey) {
     this.navCtrl.push(DetalhesHubPage, {hubKey: hubKey});
+  }
+
+  hub() {
+    this.navCtrl.push(ResultadoPesquisaHubPage, {pesquisa: this.myInput});
   }
 }

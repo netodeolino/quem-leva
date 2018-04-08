@@ -1,3 +1,4 @@
+import { ResultadoPesquisaHubPage } from './../pages/resultado-pesquisa-hub/resultado-pesquisa-hub';
 import { ChatPage } from './../pages/chat/chat';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -53,6 +54,7 @@ export const firebaseConfig = {
     BuscarPessoasPage,
     AgendaGrupoPage,
     DetalhesHubPage,
+    ResultadoPesquisaHubPage
   ],
   imports: [
     BrowserModule,
@@ -78,6 +80,7 @@ export const firebaseConfig = {
     BuscarPessoasPage,
     AgendaGrupoPage,
     DetalhesHubPage,
+    ResultadoPesquisaHubPage
   ],
   providers: [
     StatusBar,
