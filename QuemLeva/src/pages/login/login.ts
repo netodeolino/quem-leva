@@ -1,3 +1,4 @@
+import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
@@ -28,6 +29,8 @@ export class LoginPage {
           return;
         }
         this.displayName = user.displayName;      
+        this.navCtrl.setRoot(TabsPage);
+        this.navCtrl.push(TabsPage);
       });
   }
 
@@ -36,7 +39,9 @@ export class LoginPage {
   }
 
   loginFacebook(){
-    this.authService.loginFacebook();
+    this.authService.loginFacebook().then((resp: boolean) => {
+      
+    });
   }
 
   logout(){

@@ -24,7 +24,7 @@ export class AuthServiceProvider extends BaseServiceProvider {
       console.log('Hello AuthServiceProvider Provider');
   }
 
-  loginFacebook() : Promise<Boolean>{
+  loginFacebook() : Promise<Boolean> {
     var provider = new firebase.auth.FacebookAuthProvider();
 
     return new Promise((resolve, reject) => {
@@ -43,8 +43,7 @@ export class AuthServiceProvider extends BaseServiceProvider {
           }  
         })
       }).catch(this.handlePromiseError)
-    }
-
+    })
   }
 
   logout() {
