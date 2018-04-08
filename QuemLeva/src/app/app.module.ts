@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { DetalhesGrupoPage } from '../pages/detalhes-grupo/detalhes-grupo';
 import { BuscarPessoasPage } from '../pages/buscar-pessoas/buscar-pessoas';
 import { AgendaGrupoPage } from '../pages/agenda-grupo/agenda-grupo';
+import { DetalhesHubPage } from '../pages/detalhes-hub/detalhes-hub';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -42,6 +43,7 @@ export const firebaseConfig = {
     DetalhesGrupoPage,
     BuscarPessoasPage,
     AgendaGrupoPage,
+    DetalhesHubPage,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ export const firebaseConfig = {
     DetalhesGrupoPage,
     BuscarPessoasPage,
     AgendaGrupoPage,
+    DetalhesHubPage,
   ],
   providers: [
     StatusBar,
