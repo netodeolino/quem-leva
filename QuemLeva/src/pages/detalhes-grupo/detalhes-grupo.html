@@ -19,10 +19,19 @@
       <p>possui carro</p>
     </ion-item> 
   </ion-list>
-  <ion-item>
+  <!--
+   Grupo do Edson exemplifica caso de uso onde voce solicita entrada em um grupo aberto
+  -->
+  <ion-item *ngIf="grupo.nome!='Carro do Mackeenzy'">
   <ion-icon name="link"></ion-icon>
     Copiar link para convite
   </ion-item>
+
+  <ion-item *ngIf="grupo.nome=='Carro do Mackeenzy'">
+  <ion-icon name="add-circle"></ion-icon>
+    Solicitar entrada 
+  </ion-item>
+
   <ion-calendar #calendar></ion-calendar>
   <ion-item>
     <ion-label>Horário de partida</ion-label>
