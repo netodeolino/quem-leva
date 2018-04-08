@@ -1,5 +1,9 @@
+import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Grupo } from '../../models/grupo';
+import { BaseServiceProvider } from '../base-service/base-service';
 
 /*
   Generated class for the GrupoServiceProvider provider.
@@ -8,10 +12,28 @@ import { Injectable } from '@angular/core';
   and Angular DI.
 */
 @Injectable()
-export class GrupoServiceProvider {
+export class GrupoServiceProvider extends BaseServiceProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello GrupoServiceProvider Provider');
+  currentGrupo: FirebaseObjectObservable<Grupo>;
+  gruposHub: FirebaseListObservable<Grupo[]>;
+  grupos: FirebaseListObservable<Grupo[]>;
+
+  constructor(
+    public http: HttpClient,
+    public af: AngularFireAuth,
+    public db: AngularFireDatabase,
+  ) {
+    super();
+    this.listenMyGroups();
   }
 
+  private listenMyGroups(){
+    const grupoObservable = this.db.list(`/grupos`);
+    this.grupos = grupoObservable;
+  }
+
+  public listenGroupsHub(hubKey: number){
+    const grupoObservable = this.db.list(`/grupos/${hubKey}`);
+    this.gruposHub = grupoObservable;
+  }
 }

@@ -1,5 +1,7 @@
+import { Grupo } from './../../models/grupo';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { GrupoServiceProvider } from '../../providers/grupo-service/grupo-service';
 
 @Component({
   selector: 'page-detalhes-hub',
@@ -7,10 +9,18 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 
 export class DetalhesHubPage {
-  public hub: Object;
+  public hubKey: number;
+  public grupos: Grupo[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.hub = navParams.get('hub');
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public grupoService: GrupoServiceProvider) {
+    this.hubKey = navParams.get('hubKey');
+    this.grupoService.listenGroupsHub(this.hubKey);
+    this.grupoService.gruposHub.subscribe((grupos: Grupo[]) => {
+      this.grupos = grupos;
+    })
   }
 }
 

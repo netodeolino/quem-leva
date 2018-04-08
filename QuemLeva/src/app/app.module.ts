@@ -30,6 +30,7 @@ import { HttpModule } from '@angular/http';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { GrupoServiceProvider } from '../providers/grupo-service/grupo-service';
 import { CarroServiceProvider } from '../providers/carro-service/carro-service';
+import { HubServiceProvider } from '../providers/hub-service/hub-service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBt8A8cRgpqKwjVYxnihM1IMFPHSTmkH_E",
@@ -87,7 +88,8 @@ export const firebaseConfig = {
     HttpClient,
     UserServiceProvider,
     GrupoServiceProvider,
-    CarroServiceProvider
+    CarroServiceProvider,
+    HubServiceProvider
   ]
 })
 export class AppModule {}

@@ -1,3 +1,4 @@
+import { Grupo } from './../../models/grupo';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DetalhesGrupoPage } from '../detalhes-grupo/detalhes-grupo';
@@ -8,10 +9,10 @@ import { DetalhesGrupoPage } from '../detalhes-grupo/detalhes-grupo';
 })
 
 export class GruposPage {
-  public grupos: Array<any>;
+  public grupos: Grupo[];
 
   constructor(public navCtrl: NavController) {
-    this.grupos = [
+  /*   this.grupos = [
       {
         hub: {
           nome: "UFC",
@@ -24,14 +25,6 @@ export class GruposPage {
           { nome: "Lucas", img: "" },
           { nome: "Lana", img: "" },
         ],
-        idas: [
-          { horario: '07:00', dias: ['seg', 'ter', 'qua', 'qui', 'sex'] },
-          { horario: '18:00', dias: ['seg', 'qua', 'sex'] },
-        ],
-        voltas: [
-          { horario: '12:00', dias: ['seg', 'ter', 'qua', 'qui', 'sex'] },
-          { horario: '22:00', dias: ['seg', 'qua', 'sex'] },
-        ]
       },
       {
         hub: {
@@ -61,9 +54,10 @@ export class GruposPage {
         ]
       }
     ];
+  */
+ 
   }
-
-  public open(event, grupo) {
+  public open(event, grupo:Grupo) {
     this.navCtrl.push(DetalhesGrupoPage, {grupo: grupo});
   }
 }
