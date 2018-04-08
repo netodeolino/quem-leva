@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -28,9 +29,9 @@ export class AuthServiceProvider extends BaseServiceProvider {
     var provider = new firebase.auth.FacebookAuthProvider();
 
     return new Promise((resolve, reject) => {
-      this.af.auth.signInWithRedirect(provider).then((result) => {
+      firebase.auth().signInWithPopup(provider).then((result) => {
         const userObservable = this.db.object(`/users/${result.user.uid}`);
-        userObservable.valueChanges().first().subscribe((user) => {
+        userObservable.first().subscribe((user: User) => {
           if(user.hasOwnProperty('$value')){
             userObservable.update({
               name: result.user.displayName, 
@@ -40,9 +41,9 @@ export class AuthServiceProvider extends BaseServiceProvider {
               photo: `https://graph.facebook.com/${result.additionalUserInfo.profile.id}/picture?type=large&access_token=${result.credential.accessToken}`}).then(() => {
                 resolve(true);
               }).catch(this.handlePromiseError); 
-          }  
+          }
         })
-      }).catch(this.handlePromiseError)
+      }).catch(this.handlePromiseError);
     })
   }
 
@@ -50,6 +51,18 @@ export class AuthServiceProvider extends BaseServiceProvider {
     this.af.auth.signOut().then(() => {
       console.log("deslogado com sucesso!");
     }).catch(this.handlePromiseError);
+  }
+
+  get authenticated(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.af.authState.first().subscribe((authState) => {
+        if(authState){
+          resolve(true);
+        } else {
+          reject(false);
+        }
+      });
+    });
   }
 
 }
