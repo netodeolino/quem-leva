@@ -18,6 +18,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
+import { BrMaskerModule } from 'brmasker-ionic-3';
+
 // Firebase imports
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -55,6 +57,7 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     HttpModule,
     HttpClientModule,
+    BrMaskerModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
