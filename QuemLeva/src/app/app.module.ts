@@ -23,6 +23,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
+import { UserServiceProvider } from '../providers/user-service/user-service';
+import { GrupoServiceProvider } from '../providers/grupo-service/grupo-service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBt8A8cRgpqKwjVYxnihM1IMFPHSTmkH_E",
@@ -73,7 +75,9 @@ export const firebaseConfig = {
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    HttpClient
+    HttpClient,
+    UserServiceProvider,
+    GrupoServiceProvider
   ]
 })
 export class AppModule {}
