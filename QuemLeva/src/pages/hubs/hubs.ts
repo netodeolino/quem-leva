@@ -38,7 +38,5 @@ export class HubsPage {
 
   itemSelected(hubKey) {
     this.navCtrl.push(DetalhesHubPage, {hubKey: hubKey});
-    console.log(hubKey);
-    
   }
 }

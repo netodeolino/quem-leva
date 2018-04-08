@@ -18,7 +18,6 @@ export class DetalhesGrupoPage {
     public grupoService: GrupoServiceProvider
   ) {
     this.grupo = navParams.get("grupo");
-    grupoService.
   }
 }
 
