@@ -1,4 +1,5 @@
 import { CadastroUsuarioPage } from './../pages/cadastro-usuario/cadastro-usuario';
+import { DetalhesPerfilPage } from './../pages/detalhes-perfil/detalhes-perfil';
 import { ResultadoPesquisaHubPage } from './../pages/resultado-pesquisa-hub/resultado-pesquisa-hub';
 import { ChatPage } from './../pages/chat/chat';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -60,6 +61,7 @@ export const firebaseConfig = {
     DetalhesHubPage,
     ResultadoPesquisaHubPage,
     CadastroUsuarioPage,
+    DetalhesPerfilPage
   ],
   imports: [
     BrowserModule,
@@ -87,6 +89,7 @@ export const firebaseConfig = {
     DetalhesHubPage,
     ResultadoPesquisaHubPage,
     CadastroUsuarioPage,
+    DetalhesPerfilPage,
   ],
   providers: [
     StatusBar,

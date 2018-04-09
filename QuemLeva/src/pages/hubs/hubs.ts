@@ -1,4 +1,5 @@
 import { LoginPage } from './../login/login';
+import { DetalhesPerfilPage } from './../detalhes-perfil/detalhes-perfil';
 import { ResultadoPesquisaHubPage } from './../resultado-pesquisa-hub/resultado-pesquisa-hub';
 import { HubServiceProvider } from './../../providers/hub-service/hub-service';
 import { Hub } from './../../models/hub';
