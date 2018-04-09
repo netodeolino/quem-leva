@@ -46,10 +46,22 @@ export class AuthServiceProvider extends BaseServiceProvider {
     })
   }
 
-  logout() {
-    this.af.auth.signOut().then(() => {
-      console.log("deslogado com sucesso!");
+  createAuthUser(user: {email : string, password : string}) : firebase.Promise<AngularFireAuth>{
+    return this.af.auth.createUserWithEmailAndPassword(user.email, user.password).catch(this.handlePromiseError);
+  }
+
+  siginWithEmail(user: {email: string, password: string}) : firebase.Promise<boolean> {
+    return this.af.auth.signInWithEmailAndPassword(user.email, user.password).then((authState : AngularFireAuth) => {
+      return authState != null;
     }).catch(this.handlePromiseError);
+  } 
+
+  logout(): Promise<boolean>{
+    return new Promise((resolve, reject) => {
+      this.af.auth.signOut().then(() => {
+        resolve(true);
+    }).catch(this.handlePromiseError)
+    })
   }
 
   get authenticated(): Promise<boolean> {
