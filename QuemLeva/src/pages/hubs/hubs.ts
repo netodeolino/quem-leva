@@ -1,9 +1,12 @@
+import { LoginPage } from './../login/login';
+import { DetalhesPerfilPage } from './../detalhes-perfil/detalhes-perfil';
 import { ResultadoPesquisaHubPage } from './../resultado-pesquisa-hub/resultado-pesquisa-hub';
 import { HubServiceProvider } from './../../providers/hub-service/hub-service';
 import { Hub } from './../../models/hub';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DetalhesHubPage } from '../detalhes-hub/detalhes-hub';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-hubs',
@@ -17,7 +20,9 @@ export class HubsPage {
 
   constructor(
     public navCtrl: NavController,
-    public hubService: HubServiceProvider) {
+    public hubService: HubServiceProvider,
+    public authService: AuthServiceProvider,
+  ) {
       this.initializeItems();
   }
 
@@ -50,5 +55,11 @@ export class HubsPage {
 
   itemSelected(hubKey) {
     this.navCtrl.push(DetalhesHubPage, {hubKey: hubKey});
+  }
+
+  hub() {
+    this.authService.logout().then((logoutSucess) => {
+      this.navCtrl.setRoot(LoginPage);
+    })
   }
 }

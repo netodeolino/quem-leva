@@ -1,3 +1,4 @@
+import { CadastroUsuarioPage } from './../cadastro-usuario/cadastro-usuario';
 import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
@@ -48,6 +49,10 @@ export class LoginPage {
 
   logout(){
     this.authService.logout();
+  }
+
+  registrar() {
+    this.navCtrl.push(CadastroUsuarioPage);
   }
 
   private showLoading() : Loading {
