@@ -19,24 +19,34 @@ export class HubsPage {
   constructor(
     public navCtrl: NavController,
     public hubService: HubServiceProvider) {
-
-      hubService.hubs.subscribe((hubs: Hub[]) => {
-        if(hubs){
-          this.hubs = hubs;
-        }
-      })
-
+      this.initializeItems();
   }
 
-  onInput(event) {
+  initializeItems() {
+    this.hubService.hubs.subscribe((hubs: Hub[]) => {
+      if(hubs){
+        this.hubs = hubs;
+      }
+    })
+  }
 
+  onInput(event: any) {
+    this.initializeItems();
+
+    let val = event.target.value;
+
+    if (val && val.trim() != '') {
+      this.hubs = this.hubs.filter((item) => {
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
   onCancel(event) {
   }
 
   onSubmit(event) {
-    
+    this.navCtrl.push(ResultadoPesquisaHubPage, {pesquisa: this.myInput});
   }
 
   itemSelected(hubKey) {
@@ -44,7 +54,7 @@ export class HubsPage {
   }
 
   hub() {
-    //this.navCtrl.push(ResultadoPesquisaHubPage, {pesquisa: this.myInput});
-    this.navCtrl.push(DetalhesPerfilPage);
+    this.navCtrl.push(ResultadoPesquisaHubPage, {pesquisa: this.myInput});
+    //this.navCtrl.push(DetalhesPerfilPage);
   }
 }
