@@ -1,13 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      <!--{{grupo.nome}}-->
+      Grupo
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h6 style="margin-bottom: -2px; margin-left: 15px;">Membros</h6>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h6 style="margin-bottom: -2px; margin-left: 15px;">Membros</h6>
+      </ion-col>
+      <ion-col>
+        <button (click)="adicionarMembro()" outline ion-text color="secondary" style="margin-top: -9px;">Adicionar Membro</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-list>
     <ion-item *ngFor="let membro of membros">
       <ion-avatar item-start>

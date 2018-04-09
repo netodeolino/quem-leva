@@ -1,3 +1,4 @@
+import { DetalhesPerfilPage } from './../detalhes-perfil/detalhes-perfil';
 import { User } from './../../models/user';
 import { GrupoServiceProvider } from './../../providers/grupo-service/grupo-service';
 import { Grupo } from './../../models/grupo';
@@ -22,8 +23,11 @@ export class DetalhesGrupoPage {
     this.grupoService.listenMembrosgrupo(this.grupo.$key);
     this.grupoService.membros.subscribe((users: User[]) => {
       this.membros = users;
-      console.log(this.membros);
     })
+  }
+
+  adicionarMembro() {
+    this.navCtrl.push(DetalhesPerfilPage);
   }
 }
 
