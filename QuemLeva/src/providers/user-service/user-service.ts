@@ -50,4 +50,8 @@ export class UserServiceProvider extends BaseServiceProvider{
     return this.currentUser.update(user).catch(this.handlePromiseError);
   }
 
+  create(user: User, uuid : string) : firebase.Promise<void>{
+    return this.db.object('/users/'+uuid).set(user).catch(this.handlePromiseError);
+  }
+
 }

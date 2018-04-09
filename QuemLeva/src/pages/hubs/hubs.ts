@@ -1,9 +1,11 @@
+import { LoginPage } from './../login/login';
 import { ResultadoPesquisaHubPage } from './../resultado-pesquisa-hub/resultado-pesquisa-hub';
 import { HubServiceProvider } from './../../providers/hub-service/hub-service';
 import { Hub } from './../../models/hub';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DetalhesHubPage } from '../detalhes-hub/detalhes-hub';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-hubs',
@@ -17,7 +19,8 @@ export class HubsPage {
 
   constructor(
     public navCtrl: NavController,
-    public hubService: HubServiceProvider) {
+    public hubService: HubServiceProvider,
+    public authService: AuthServiceProvider) {
 
       hubService.hubs.subscribe((hubs: Hub[]) => {
         if(hubs){
@@ -43,6 +46,8 @@ export class HubsPage {
   }
 
   hub() {
-    this.navCtrl.push(ResultadoPesquisaHubPage, {pesquisa: this.myInput});
+    this.authService.logout().then((logoutSucess) => {
+      this.navCtrl.setRoot(LoginPage);
+    })
   }
 }

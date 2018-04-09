@@ -1,3 +1,4 @@
+import { CadastroUsuarioPage } from './../pages/cadastro-usuario/cadastro-usuario';
 import { ResultadoPesquisaHubPage } from './../pages/resultado-pesquisa-hub/resultado-pesquisa-hub';
 import { ChatPage } from './../pages/chat/chat';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -22,6 +23,9 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 import { BrMaskerModule } from 'brmasker-ionic-3';
 import { CalendarModule } from 'ionic3-calendar-en';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 
 // Firebase imports
 import { AngularFireModule } from 'angularfire2';
@@ -54,7 +58,8 @@ export const firebaseConfig = {
     BuscarPessoasPage,
     AgendaGrupoPage,
     DetalhesHubPage,
-    ResultadoPesquisaHubPage
+    ResultadoPesquisaHubPage,
+    CadastroUsuarioPage,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +85,8 @@ export const firebaseConfig = {
     BuscarPessoasPage,
     AgendaGrupoPage,
     DetalhesHubPage,
-    ResultadoPesquisaHubPage
+    ResultadoPesquisaHubPage,
+    CadastroUsuarioPage,
   ],
   providers: [
     StatusBar,
@@ -92,7 +98,11 @@ export const firebaseConfig = {
     UserServiceProvider,
     GrupoServiceProvider,
     CarroServiceProvider,
-    HubServiceProvider
+    HubServiceProvider,
+    FileTransfer,
+    File,
+    FileTransferObject,
+    Camera
   ]
 })
 export class AppModule {}
