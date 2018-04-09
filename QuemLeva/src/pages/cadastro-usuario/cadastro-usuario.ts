@@ -1,4 +1,4 @@
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { TabsPage } from './../tabs/tabs';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
@@ -6,6 +6,7 @@ import { AuthServiceProvider } from './../../providers/auth-service/auth-service
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
  * Generated class for the CadastroUsuarioPage page.
@@ -23,7 +24,7 @@ export class CadastroUsuarioPage {
 
   signupForm : FormGroup;
   imageURI:any;
-  imageFileName:any;
+  imagemURL:any;
 
   constructor(
     public authService : AuthServiceProvider,
@@ -58,15 +59,19 @@ export class CadastroUsuarioPage {
     let formUser = this.signupForm.value;
     let username : string = formUser.username;
     
+    console.log(formUser);
     this.authService.createAuthUser({
       email: formUser.email,
       password: formUser.password  
-    }).then((authState) => {
+    }).then((authState: AngularFireAuth) => {
       delete formUser.password;
-      let uuid : string = authState.auth.currentUser.uid;
-
+      let uuid : string = this.authService.af.auth.currentUser.uid;
+      console.log(uuid);
+      
+      if(this.imageURI){
+        this.uploadFile(uuid);
+      }
       this.userService.create(formUser, uuid).then(() => {
-        this.navCtrl.setRoot(TabsPage);
         loading.dismiss();
       })
     }).catch((error : any) => {
@@ -79,17 +84,32 @@ export class CadastroUsuarioPage {
   getImage() {
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+      targetHeight: 200,
+      targetWidth: 200,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
     }
   
     this.camera.getPicture(options).then((imageData) => {
-      this.imageURI = imageData;
+      this.imageURI = this.dataURItoBlob('data:image/jpeg;base64,' + imageData);
+      this.imagemURL = 'data:image/jpeg;base64,' + imageData
     }, (err) => {
       console.log(err);
       this.presentToast(err);
     });
   }
+
+  dataURItoBlob(dataURI) {
+    // code adapted from: http://stackoverflow.com/questions/33486352/cant-upload-image-to-aws-s3-from-ionic-camera
+    let binary = atob(dataURI.split(',')[1]);
+    let array = [];
+    for (let i = 0; i < binary.length; i++) {
+      array.push(binary.charCodeAt(i));
+    }
+    return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
+  };
 
   private showLoading() : Loading {
     let loading : Loading = this.loadingCtrl.create({
@@ -106,32 +126,16 @@ export class CadastroUsuarioPage {
     }).present(); 
   }
   
-  uploadFile() {
-    let loader = this.loadingCtrl.create({
-      content: "Uploading..."
-    });
-    loader.present();
+  uploadFile(key): any {
     const fileTransfer: FileTransferObject = this.transfer.create();
-  
-    let options: FileUploadOptions = {
-      fileKey: 'ionicfile',
-      fileName: 'ionicfile',
-      chunkedMode: false,
-      mimeType: "image/jpeg",
-      headers: {}
-    }
-  
-    fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
-      .then((data) => {
-      console.log(data+" Uploaded Successfully");
-      this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
-      loader.dismiss();
-      this.presentToast("Image uploaded successfully");
-    }, (err) => {
-      console.log(err);
-      loader.dismiss();
-      this.presentToast(err);
-    });
+    var blob = new Blob([this.imageURI], { type: "image/jpeg" });
+    let uploadTask = this.userService.uploadPhoto(blob, key);
+    uploadTask.on('state_changed', (snapshot) => {
+      }, (error : Error) => {
+        //catch error
+      }, () => {
+        this.userService.currentUser.update({photo: uploadTask.snapshot.downloadURL});
+      });
   }
 
   presentToast(msg) {

@@ -1,9 +1,12 @@
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { FirebaseObjectObservable, AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { User } from '../../models/user';
 import { BaseServiceProvider } from '../base-service/base-service';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
+import { FirebaseApp } from 'angularfire2';
 
 /*
   Generated class for the UserServiceProvider provider.
@@ -20,7 +23,8 @@ export class UserServiceProvider extends BaseServiceProvider{
   constructor(
     public http: HttpClient,
     public af: AngularFireAuth,
-    public db: AngularFireDatabase) {
+    public db: AngularFireDatabase,
+    @Inject(FirebaseApp) public firebaseApp : FirebaseApp,) {
       super();
       this.listenAuthState();
   }
@@ -52,6 +56,11 @@ export class UserServiceProvider extends BaseServiceProvider{
 
   create(user: User, uuid : string) : firebase.Promise<void>{
     return this.db.object('/users/'+uuid).set(user).catch(this.handlePromiseError);
+  }
+
+  uploadPhoto(file : any, userId : string) : firebase.storage.UploadTask {
+    const storageRef = firebase.storage().ref();
+    return storageRef.child('/users/'+userId).put(file);
   }
 
 }
