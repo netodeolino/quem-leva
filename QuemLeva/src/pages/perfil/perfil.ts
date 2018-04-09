@@ -37,7 +37,7 @@ export class PerfilPage {
     });
   }
 
-  atualizarPerfil(){
+  atualizarPerfil() {
     this.userService.edit(this.currentUser);
     this.carroService.edit(this.currentCar);
   }
