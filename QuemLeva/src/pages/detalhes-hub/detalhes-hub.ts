@@ -20,7 +20,6 @@ export class DetalhesHubPage {
     public grupoService: GrupoServiceProvider) {
     this.hubKey = navParams.get('hubKey');
     this.grupoService.listenGroupsHub(this.hubKey);
-    console.log(this.hubKey);
     
     this.grupoService.gruposHub.subscribe((grupos: Grupo[]) => {
       this.grupos = grupos;

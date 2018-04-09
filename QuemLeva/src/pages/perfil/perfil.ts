@@ -44,8 +44,9 @@ export class PerfilPage {
   }
 
   logout() {
-    this.authService.logout();
-    this.navCtrl.push(LoginPage);
+    this.authService.logout().then(() => {
+      this.navCtrl.push(LoginPage);
+    });
   }
 
 }
