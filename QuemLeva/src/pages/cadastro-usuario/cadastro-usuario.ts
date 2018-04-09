@@ -1,6 +1,4 @@
-import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { TabsPage } from './../tabs/tabs';
 import { UserServiceProvider } from './../../providers/user-service/user-service';
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { Component } from '@angular/core';
@@ -34,7 +32,6 @@ export class CadastroUsuarioPage {
     public alertCtrl : AlertController,
     public formBuilder : FormBuilder,
     public userService : UserServiceProvider,
-    private transfer: FileTransfer,
     private camera: Camera,
     public toastCtrl: ToastController,
   ){
@@ -57,7 +54,6 @@ export class CadastroUsuarioPage {
   onSubmit() : void {
     let loading : Loading = this.showLoading();
     let formUser = this.signupForm.value;
-    let username : string = formUser.username;
     
     console.log(formUser);
     this.authService.createAuthUser({
@@ -127,7 +123,6 @@ export class CadastroUsuarioPage {
   }
   
   uploadFile(key): any {
-    const fileTransfer: FileTransferObject = this.transfer.create();
     var blob = new Blob([this.imageURI], { type: "image/jpeg" });
     let uploadTask = this.userService.uploadPhoto(blob, key);
     uploadTask.on('state_changed', (snapshot) => {

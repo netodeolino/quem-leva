@@ -37,6 +37,7 @@
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-file-transfer": "^1.7.1",
+    "cordova-plugin-googlemaps": "^2.2.9",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.19",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -68,7 +69,6 @@
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
-      "android",
       "browser"
     ]
   }
