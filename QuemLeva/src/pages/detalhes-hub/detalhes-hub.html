@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Grupos
+      Grupos do Hub
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,6 +9,16 @@
 <ion-content padding>
   <div *ngIf="grupos">
     <ion-list>
+      <ion-item
+        (click)="criarGrupo()"
+        class="criar-grupo">
+        <ion-col>
+          <ion-icon name="add-circle"></ion-icon>
+        </ion-col>
+        <ion-col>
+          Criar Grupo
+        </ion-col>
+      </ion-item>
       <ion-item *ngFor="let grupo of grupos">
         <ion-avatar item-start>
           <img src="{{grupo.img}}">

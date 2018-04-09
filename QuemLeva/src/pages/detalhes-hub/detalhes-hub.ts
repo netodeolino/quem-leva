@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { GrupoServiceProvider } from '../../providers/grupo-service/grupo-service';
 import { DetalhesGrupoPage } from '../detalhes-grupo/detalhes-grupo';
+import { CriarGrupoPage } from '../criar-grupo/criar-grupo';
 
 @Component({
   selector: 'page-detalhes-hub',
@@ -28,6 +29,10 @@ export class DetalhesHubPage {
 
   itemSelected(grupo) {
     this.navCtrl.push(DetalhesGrupoPage, {grupo: grupo});
+  }
+
+  criarGrupo() {
+    this.navCtrl.push(CriarGrupoPage, {hubKey: this.hubKey});
   }
 }
 

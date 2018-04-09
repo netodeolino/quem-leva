@@ -84,4 +84,5 @@
     <plugin name="cordova-plugin-googlemaps" spec="^2.2.9">
         <variable name="API_KEY_FOR_ANDROID" value="%20AIzaSyAlqoEbORKX3QXZAuSLRgWamgqR7QK9C-E" />
     </plugin>
+    <engine name="android" spec="~7.0.0" />
 </widget>
