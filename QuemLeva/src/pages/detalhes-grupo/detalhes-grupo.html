@@ -28,16 +28,15 @@
       <p>possui carro</p>
     </ion-item> 
   </ion-list>
-  <!--
-   Grupo do Edson exemplifica caso de uso onde voce solicita entrada em um grupo aberto
-  -->
-  <ion-item *ngIf="grupo.nome!='Carro do Mackeenzy'">
-  <ion-icon name="link"></ion-icon>
+
+  <!--<ion-item *ngIf="grupo.nome!='Carro do Mackeenzy'">-->
+  <ion-item *ngIf="souMembro()">
+    <ion-icon name="link"></ion-icon>
     Copiar link para convite
   </ion-item>
 
-  <ion-item *ngIf="grupo.nome=='Carro do Mackeenzy'">
-  <ion-icon name="add-circle"></ion-icon>
+  <ion-item *ngIf="!souMembro()">
+    <ion-icon name="add-circle"></ion-icon>
     Solicitar entrada 
   </ion-item>
 

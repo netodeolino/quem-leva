@@ -18,6 +18,7 @@ import { DetalhesGrupoPage } from '../pages/detalhes-grupo/detalhes-grupo';
 import { BuscarPessoasPage } from '../pages/buscar-pessoas/buscar-pessoas';
 import { AgendaGrupoPage } from '../pages/agenda-grupo/agenda-grupo';
 import { DetalhesHubPage } from '../pages/detalhes-hub/detalhes-hub';
+import { CriarGrupoPage } from '../pages/criar-grupo/criar-grupo';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
@@ -61,8 +62,9 @@ export const firebaseConfig = {
     AgendaGrupoPage,
     DetalhesHubPage,
     ResultadoPesquisaHubPage,
+    DetalhesPerfilPage,
+    CriarGrupoPage,
     CadastroUsuarioPage,
-    DetalhesPerfilPage
   ],
   imports: [
     BrowserModule,
@@ -89,8 +91,9 @@ export const firebaseConfig = {
     AgendaGrupoPage,
     DetalhesHubPage,
     ResultadoPesquisaHubPage,
-    CadastroUsuarioPage,
     DetalhesPerfilPage,
+    CriarGrupoPage,
+    CadastroUsuarioPage,
   ],
   providers: [
     StatusBar,
