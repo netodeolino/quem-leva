@@ -1,3 +1,4 @@
+import { LoginPage } from './../login/login';
 import { Carro } from './../../models/carro';
 import { CarroServiceProvider } from './../../providers/carro-service/carro-service';
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
@@ -42,5 +43,9 @@ export class PerfilPage {
     this.carroService.edit(this.currentCar);
   }
 
+  logout() {
+    this.authService.logout();
+    this.navCtrl.push(LoginPage);
+  }
 
 }
