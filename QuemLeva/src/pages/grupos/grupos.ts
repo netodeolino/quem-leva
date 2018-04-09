@@ -16,8 +16,6 @@ export class GruposPage {
     this.grupoService.grupos.subscribe((grupos : any[]) => {
       this.grupos = grupos;
     });
-
-    console.log(this.grupos);
   }
   
   public open(event, grupo:Grupo) {
