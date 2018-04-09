@@ -33,6 +33,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
 import { GrupoServiceProvider } from '../providers/grupo-service/grupo-service';
 import { CarroServiceProvider } from '../providers/carro-service/carro-service';
 import { HubServiceProvider } from '../providers/hub-service/hub-service';
+import { GeolocationServiceProvider } from '../providers/geolocation-service/geolocation-service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBt8A8cRgpqKwjVYxnihM1IMFPHSTmkH_E",
@@ -95,7 +96,8 @@ export const firebaseConfig = {
     UserServiceProvider,
     GrupoServiceProvider,
     CarroServiceProvider,
-    HubServiceProvider
+    HubServiceProvider,
+    GeolocationServiceProvider
   ]
 })
 export class AppModule {}
