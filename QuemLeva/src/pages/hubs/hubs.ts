@@ -1,5 +1,4 @@
 import { LoginPage } from './../login/login';
-import { ResultadoPesquisaHubPage } from './../resultado-pesquisa-hub/resultado-pesquisa-hub';
 import { HubServiceProvider } from './../../providers/hub-service/hub-service';
 import { Hub } from './../../models/hub';
 import { Component } from '@angular/core';
@@ -49,7 +48,6 @@ export class HubsPage {
   }
 
   onSubmit(event) {
-    this.navCtrl.push(ResultadoPesquisaHubPage, {pesquisa: this.myInput});
   }
 
   itemSelected(hubKey) {
