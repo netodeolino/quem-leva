@@ -29,8 +29,6 @@ export class CarroServiceProvider extends BaseServiceProvider{
   listenCar(){
     this.af.authState.subscribe((authState) => {
       if(authState){
-        console.log(this.af.auth.currentUser.uid);
-        
         this.currentCarro = this.db.object(`/carros/${this.af.auth.currentUser.uid}`);
       }
     })
