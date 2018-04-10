@@ -1,3 +1,5 @@
+import { GrupoServiceProvider } from './../../providers/grupo-service/grupo-service';
+import { Grupo } from './../../models/grupo';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -15,11 +17,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CriarGrupoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  grupo: Grupo = new Grupo("", "");
+  hubKey: any;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public grupoService: GrupoServiceProvider,
+  ) {
+    this.hubKey = navParams.get("hubKey");
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CriarGrupoPage');
+  criarGrupo(){
+    this.grupoService.createGroup(this.hubKey, this.grupo);
+    this.navCtrl.pop();
   }
 
 }

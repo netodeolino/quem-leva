@@ -34,6 +34,11 @@ export class GrupoServiceProvider extends BaseServiceProvider {
     this.grupos = grupoObservable;
   }
 
+  public createGroup(hubKey: any, grupo: Grupo){
+    this.db.list(`/grupos/${hubKey}`).push(grupo);
+    this.db.list(`/grupos-usuarios`).push(grupo);
+  }
+
   public listenGroupsHub(hubKey: number){
     const grupoObservable = this.db.list(`/grupos/${hubKey}`);
     this.gruposHub = grupoObservable;
