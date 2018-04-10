@@ -31,23 +31,23 @@
     </ion-item>
   </div>
 
-  <div *ngIf="currentCar">
+  <div *ngIf="currentUser">
     <h5 style="margin-bottom: -5px; margin-left: 15px;">Carro</h5>
     <ion-item>
       <ion-label><ion-icon name="car"></ion-icon></ion-label>
-      <ion-input type="text" max="50" [(ngModel)]="currentCar.modelo" placeholder="Modelo"></ion-input>
+      <ion-input type="text" max="50" [(ngModel)]="currentUser.carro.modelo" placeholder="Modelo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label><ion-icon name="contacts"></ion-icon></ion-label>
+      <ion-input type="text" max="50" [(ngModel)]="currentUser.carro.vagas" placeholder="Quantidade de vagas"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label><ion-icon name="car"></ion-icon></ion-label>
-      <ion-input type="text" max="50" [(ngModel)]="currentCar.vagas" placeholder="Quantidade de vagas"></ion-input>
+      <ion-input type="text" max="50" [(ngModel)]="currentUser.carro.placa" placeholder="Placa"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label><ion-icon name="car"></ion-icon></ion-label>
-      <ion-input type="text" max="50" [(ngModel)]="currentCar.placa" placeholder="Placa"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label><ion-icon name="car"></ion-icon></ion-label>
-        <ion-input type="text" max="50" [(ngModel)]="currentCar.cor" placeholder="Cor"></ion-input>
+        <ion-label><ion-icon name="color-fill"></ion-icon></ion-label>
+        <ion-input type="text" max="50" [(ngModel)]="currentUser.carro.cor" placeholder="Cor"></ion-input>
     </ion-item>
     <button class="center" type="submit" (click)="atualizarPerfil()" ion-button round>Salvar</button>
   </div>

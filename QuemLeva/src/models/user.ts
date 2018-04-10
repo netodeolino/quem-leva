@@ -1,3 +1,4 @@
+import { Carro } from './carro';
 export class User {    
     
     
@@ -11,6 +12,7 @@ export class User {
         public telefone: string,
         public facebookToken : string, 
         public uidFacebook: string,
+        public carro: Carro,
     ){
 
     }

@@ -45,6 +45,7 @@ export class DetalhesPerfilPage {
         this.membros = users;
         this.currentUser = this.membros[0];
       })
+      console.log(this.currentUser);
   }
 
   ionViewDidLoad() {
