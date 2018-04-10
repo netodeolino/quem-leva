@@ -15,7 +15,7 @@
     <ion-label><ion-icon name="contact"></ion-icon></ion-label>
     <ion-input type="text" max="50" [(ngModel)]="currentUser.name" placeholder="Nome Completo"></ion-input>
   </ion-item>
-  <ion-item *ngIf="currentUser.carro">
+  <ion-item *ngIf="currentUser?.carro">
     <ion-label><ion-icon name="car"></ion-icon></ion-label>
     <ion-input type="text" [(ngModel)]="currentUser.carro.vagas" placeholder="Possui carro"></ion-input>
   </ion-item>
