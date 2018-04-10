@@ -22,6 +22,7 @@ import { CriarGrupoPage } from '../pages/criar-grupo/criar-grupo';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { Facebook } from '@ionic-native/facebook';
 
 import { BrMaskerModule } from 'brmasker-ionic-3';
 import { CalendarModule } from 'ionic3-calendar-en';
@@ -99,6 +100,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
+    Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     HttpClient,

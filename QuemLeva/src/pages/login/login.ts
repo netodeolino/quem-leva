@@ -34,17 +34,12 @@ export class LoginPage {
       });
     }
     
-    ionViewDidLoad() {
-      console.log('ionViewDidLoad LoginPage');
-    }
-    
-    loginFacebook(){
-      this.loading = this.showLoading();
-      this.authService.loginFacebook().then((isLogged) => {
-        if(isLogged){
-          this.loading.dismiss();
-        }
-    });
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+  }
+  
+  loginFacebook(){
+    this.authService.loginFacebook();
   }
 
   logout(){
@@ -54,12 +49,5 @@ export class LoginPage {
   registrar() {
     this.navCtrl.push(CadastroUsuarioPage);
   }
-
-  private showLoading() : Loading {
-    let loading : Loading = this.loadingCtrl.create({content : 'Entrando...'});
-    loading.present();
-    return loading;
-  }
-
 
 }
